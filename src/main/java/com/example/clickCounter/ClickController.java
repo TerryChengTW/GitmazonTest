@@ -1,5 +1,5 @@
 // ClickController.java
-package com.example.clickcounter;
+package com.example.clickCounter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

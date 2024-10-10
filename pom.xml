@@ -59,7 +59,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.clickcounter.ClickCounterApplication</mainClass>
+                    <mainClass>com.example.clickCounter.ClickCounterApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

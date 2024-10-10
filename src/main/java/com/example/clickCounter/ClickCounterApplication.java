@@ -1,5 +1,5 @@
 // ClickCounterApplication.java
-package com.example.clickcounter;
+package com.example.clickCounter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
