@@ -1,0 +1,71 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點擊計數器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        #clickArea {
+            width: 200px;
+            height: 200px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+        #clickArea:active {
+            background-color: #45a049;
+        }
+        #resetButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>點擊計數器</h1>
+    <button id="clickArea" th:text="${clickCount}">0</button>
+    <br>
+    <button id="resetButton">重置計數</button>
+    <p id="resetMessage"></p>
+</div>
+
+<script>
+    const clickArea = document.getElementById('clickArea');
+    const resetButton = document.getElementById('resetButton');
+    const resetMessage = document.getElementById('resetMessage');
+
+    clickArea.addEventListener('click', async () => {
+        const response = await fetch('/click', { method: 'POST' });
+        const count = await response.text();
+        clickArea.textContent = count;
+    });
+
+    resetButton.addEventListener('click', async () => {
+        const response = await fetch('/reset', { method: 'POST' });
+        const message = await response.text();
+        resetMessage.textContent = message;
+        clickArea.textContent = '0';
+    });
+</script>
+</body>
+</html>
